@@ -7,6 +7,7 @@ export default {
         customBlack: "#131313",
         customPrimaryGreen: "#23be0a",
         customSecondaryBlue: "#59c6d2",
+        customGrayBg: "#1313130c",
         customGray08: "#131313cc",
         customGray07: "#131313b3",
         customGray06: "#13131399",
