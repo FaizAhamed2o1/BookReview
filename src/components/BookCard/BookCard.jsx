@@ -8,7 +8,7 @@ const BookCard = ({ book }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
-    navigate("/bookDetails");
+    navigate("/bookDetails", { state: book });
   };
 
   return (
