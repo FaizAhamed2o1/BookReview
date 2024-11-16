@@ -8,6 +8,7 @@ import ListedBooks from "./pages/ListedBooks/ListedBooks.jsx";
 import PagesToRead from "./pages/PagesToRead/PagesToRead.jsx";
 import Error from "./pages/Error/Error.jsx";
 import BooksDataContextProvider from "./context/BooksDataContext/BooksDataContextProvider.jsx";
+import BookDetails from "./pages/BookDetails/BookDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/pagesToRead",
         element: <PagesToRead></PagesToRead>,
+      },
+      {
+        path: "/bookDetails",
+        element: <BookDetails></BookDetails>,
       },
     ],
   },
