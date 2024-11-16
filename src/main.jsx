@@ -7,12 +7,14 @@ import Home from "./pages/Home/Home.jsx";
 import ListedBooks from "./pages/ListedBooks/ListedBooks.jsx";
 import PagesToRead from "./pages/PagesToRead/PagesToRead.jsx";
 import Error from "./pages/Error/Error.jsx";
+import BooksDataContextProvider from "./context/BooksDataContext/BooksDataContextProvider.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
     errorElement: <Error></Error>,
+    loader: () => fetch("../books.json"),
     children: [
       {
         path: "/",
@@ -32,6 +34,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <BooksDataContextProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </BooksDataContextProvider>
   </StrictMode>
 );
