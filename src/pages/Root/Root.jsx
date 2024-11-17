@@ -3,6 +3,8 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import { useContext, useEffect } from "react";
 import BooksDataContext from "../../context/BooksDataContext/BooksDataContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Root = () => {
   const books = useLoaderData();
@@ -20,6 +22,11 @@ const Root = () => {
         <Navbar></Navbar>
 
         <Outlet></Outlet>
+
+        <ToastContainer
+          stacked
+          style={{ maxWidth: "80%", marginTop: "22px" }}
+        />
       </div>
 
       <Footer></Footer>

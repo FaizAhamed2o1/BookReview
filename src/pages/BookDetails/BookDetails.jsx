@@ -1,6 +1,13 @@
 import { useLocation } from "react-router-dom";
 import Hashtag from "../../components/Hashtag/Hashtag";
 import { useEffect } from "react";
+import {
+  getStoredBooks,
+  removeFromWishlist,
+  setBooksToLocalStorage,
+} from "../../utils/localstorage";
+import { successToast, warningToast } from "../../utils/toasts";
+import removeArrayElementByValue from "../../utils/removeArrayElementByValue";
 
 const BookDetails = () => {
   // Note: To get the passed bookData from state
@@ -8,6 +15,7 @@ const BookDetails = () => {
   const book = location.state;
 
   const {
+    bookId,
     bookName,
     author,
     image,
@@ -19,6 +27,42 @@ const BookDetails = () => {
     publisher,
     yearOfPublishing,
   } = book;
+
+  const handleReadBtn = () => {
+    const isReadBefore = setBooksToLocalStorage("readBooks", bookId);
+    const wishlistedBooks = getStoredBooks("wishlistedBook");
+
+    const isAlreadyWishlisted = wishlistedBooks.find(
+      (wishlisted) => wishlisted === bookId
+    );
+
+    if (!isReadBefore) {
+      // Note: Checks if the book that we add on the read list is already on the wishlist. if it is, then it will be removed.
+      isAlreadyWishlisted && removeFromWishlist(bookId);
+      successToast("Added to read list successfully! 🎉");
+    } else {
+      warningToast("Already exists on the read list. 👍");
+    }
+  };
+
+  const handleWishlistBtn = () => {
+    const readBooks = getStoredBooks("readBooks");
+    const wishlistedBooks = getStoredBooks("wishlistedBook");
+
+    const isRead = readBooks.find((readBook) => readBook === bookId);
+
+    const isWishlisted = wishlistedBooks.find(
+      (wishlistedBook) => wishlistedBook === bookId
+    );
+
+    if (!isRead && !isWishlisted) {
+      setBooksToLocalStorage("wishlistedBook", bookId);
+
+      successToast("Added to the wishlist successfully! ❤️");
+    } else {
+      warningToast("Book already read. Can't add to wishlist. ❌");
+    }
+  };
 
   // Note: To show the page from the top
   useEffect(() => {
@@ -84,11 +128,17 @@ const BookDetails = () => {
 
         {/* Review and wishlist button */}
         <div className="space-x-4">
-          <button className="btn md:py-4 md:px-7 md:text-lg h-fit hover:opacity-85 sm:text-base text-customBlack mt-2 text-sm font-semibold bg-transparent border border-[#1313134c] outline-none">
+          <button
+            className="btn md:py-4 md:px-7 md:text-lg h-fit hover:opacity-85 sm:text-base text-customBlack mt-2 text-sm font-semibold bg-transparent border border-[#1313134c] outline-none"
+            onClick={handleReadBtn}
+          >
             Read
           </button>
 
-          <button className="btn md:py-4 md:px-7 md:text-lg bg-[#50b1c9] h-fit hover:bg-blue-300 sm:text-base mt-2 text-sm font-semibold text-white outline-none">
+          <button
+            className="btn md:py-4 md:px-7 md:text-lg bg-[#50b1c9] h-fit hover:bg-blue-300 sm:text-base mt-2 text-sm font-semibold text-white outline-none"
+            onClick={handleWishlistBtn}
+          >
             Wishlist
           </button>
         </div>
