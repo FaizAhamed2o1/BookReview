@@ -7,7 +7,6 @@ import {
   setBooksToLocalStorage,
 } from "../../utils/localstorage";
 import { successToast, warningToast } from "../../utils/toasts";
-import removeArrayElementByValue from "../../utils/removeArrayElementByValue";
 
 const BookDetails = () => {
   // Note: To get the passed bookData from state
