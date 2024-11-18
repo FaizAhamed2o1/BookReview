@@ -1,25 +1,28 @@
-import { useContext } from "react";
-import { getStoredBooks } from "../../utils/localstorage";
-import BooksDataContext from "../../context/BooksDataContext/BooksDataContext";
 import ListedBooksCard from "../ListedBooksCard/ListedBooksCard";
+import useBookData from "../../hooks/useBookData";
 
 const ReadAndWishlistBooksTabs = () => {
-  const readBooksId = getStoredBooks("readBooks");
-  const wishlistBooksId = getStoredBooks("wishlistedBook");
+  //   const readBooksId = getStoredBooks("readBooks");
+  //   const wishlistBooksId = getStoredBooks("wishlistedBook");
 
-  const { booksData } = useContext(BooksDataContext);
+  //   const { booksData } = useContext(BooksDataContext);
 
-  //   Note: Filters the books who's IDs are saved in the local storage
-  const readBooks = booksData.filter((bookData) =>
-    readBooksId.includes(bookData.bookId)
-  );
+  //   //   Note: Filters the books who's IDs are saved in the local storage
+  //   const readBooks = booksData.filter((bookData) =>
+  //     readBooksId.includes(bookData.bookId)
+  //   );
 
-  const wishlistBooks = booksData.filter((bookData) =>
-    wishlistBooksId.includes(bookData.bookId)
-  );
+  //   const wishlistBooks = booksData.filter((bookData) =>
+  //     wishlistBooksId.includes(bookData.bookId)
+  //   );
+
+  const readBooks = useBookData("readBooks");
+  console.log(readBooks);
+
+  const wishlistBooks = useBookData("wishlistedBook");
 
   return (
-    <div role="tablist" className="tabs tabs-lifted">
+    <div role="tablist" className="tabs tabs-lifted md:mb-24 mb-16">
       <input
         type="radio"
         name="my_tabs_2"
