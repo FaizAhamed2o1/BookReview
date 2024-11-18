@@ -6,9 +6,9 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip,
 } from "recharts";
 
+// eslint-disable-next-line react/prop-types
 const CustomShapeBarChart = ({ barChartData }) => {
   const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "red", "pink"];
 

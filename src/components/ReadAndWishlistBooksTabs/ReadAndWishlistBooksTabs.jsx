@@ -1,25 +1,24 @@
 import ListedBooksCard from "../ListedBooksCard/ListedBooksCard";
 import useBookData from "../../hooks/useBookData";
+import { useEffect } from "react";
+import PropTypes from "prop-types";
+import sortBooks from "../../utils/sortBooks";
 
-const ReadAndWishlistBooksTabs = () => {
-  //   const readBooksId = getStoredBooks("readBooks");
-  //   const wishlistBooksId = getStoredBooks("wishlistedBook");
-
-  //   const { booksData } = useContext(BooksDataContext);
-
-  //   //   Note: Filters the books who's IDs are saved in the local storage
-  //   const readBooks = booksData.filter((bookData) =>
-  //     readBooksId.includes(bookData.bookId)
-  //   );
-
-  //   const wishlistBooks = booksData.filter((bookData) =>
-  //     wishlistBooksId.includes(bookData.bookId)
-  //   );
+const ReadAndWishlistBooksTabs = ({ selectedProperty }) => {
+  let sortedReadBooks = [];
+  let sortedWishlistBooks = [];
 
   const readBooks = useBookData("readBooks");
-  console.log(readBooks);
 
   const wishlistBooks = useBookData("wishlistedBook");
+
+  useEffect(() => {}, [selectedProperty]);
+
+  // Note: The select tag filter code for read books tab.
+  sortedReadBooks = [...sortBooks(readBooks, selectedProperty)];
+  sortedWishlistBooks = [...sortBooks(wishlistBooks, selectedProperty)];
+
+  // Note: The select tag filter code for wishlist books tab
 
   return (
     <div role="tablist" className="tabs tabs-lifted md:mb-24 mb-16">
@@ -36,7 +35,7 @@ const ReadAndWishlistBooksTabs = () => {
         className="tab-content bg-base-100 border-base-300 border-x-0 pt-6 border-t border-b-0"
       >
         <div className="space-y-6">
-          {readBooks.map((book) => (
+          {sortedReadBooks.map((book) => (
             <ListedBooksCard key={book.bookId} book={book}></ListedBooksCard>
           ))}
         </div>
@@ -54,13 +53,17 @@ const ReadAndWishlistBooksTabs = () => {
         className="tab-content bg-base-100 border-base-300 border-x-0 pt-6 border-t border-b-0"
       >
         <div className="space-y-6">
-          {wishlistBooks.map((book) => (
+          {sortedWishlistBooks.map((book) => (
             <ListedBooksCard key={book.bookId} book={book}></ListedBooksCard>
           ))}
         </div>
       </div>
     </div>
   );
+};
+
+ReadAndWishlistBooksTabs.propTypes = {
+  selectedProperty: PropTypes.string,
 };
 
 export default ReadAndWishlistBooksTabs;

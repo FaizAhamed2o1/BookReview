@@ -49,7 +49,9 @@ const ListedBooks = () => {
         </select>
       </div>
 
-      <ReadAndWishlistBooksTabs></ReadAndWishlistBooksTabs>
+      <ReadAndWishlistBooksTabs
+        selectedProperty={selectedProperty}
+      ></ReadAndWishlistBooksTabs>
     </div>
   );
 };
