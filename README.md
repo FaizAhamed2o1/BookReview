@@ -27,6 +27,7 @@
 
 - **React**: A JavaScript library for building user interfaces. It helps in creating dynamic single-page applications with reusable components.
 - **React Router**: A routing library for React that enables navigation between different views or pages in the app.
+- **Context API**: A feature provided by react library to control the global state of the app and avoid excessive prop drilling.
 - **Local Storage**: A web storage solution that allows data to be stored in the user's browser, enabling data persistence across sessions.
 - **Tailwind CSS**: A utility-first CSS framework used to design responsive layouts and custom styles easily.
 - **Recharts**: A library for creating composable, customizable charts with React, used here to display statistics through a bar chart.
