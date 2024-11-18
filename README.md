@@ -15,6 +15,10 @@
   - Users can add books to either the **Wish List** or **Read List**.
   - Once a book is read from the **Wish List**, it is removed from the **Wish List** and automatically added to the **Read List** to keep track of progress.
 
+- **Sorting Books by Pages, Publish Date, or Rating**:
+  - Users can sort the list of books based on various criteria such as **number of pages**, **publish date**, or **rating**.
+  - This helps users to easily organize and find books based on their preferred attributes.
+
 - **Statistics with Custom Bar Chart**:
   - The app generates a **custom bar chart** to visually display statistics about the user's reading activity.
   - The bar chart shows the number of books read, wish-listed, and other relevant metrics to help users track their reading habits.
