@@ -2,6 +2,10 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    screens: {
+      "lg-1100": "1100px",
+    },
+
     extend: {
       colors: {
         customBlack: "#131313",

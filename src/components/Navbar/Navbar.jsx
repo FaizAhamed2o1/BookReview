@@ -3,12 +3,12 @@ import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <div className="navbar bg-base-100 lg:my-12 px-0 mt-4 mb-8">
-      <div className="navbar-start">
+      <div className="navbar-start lg:w-[160px]">
         <div className="dropdown">
           <div
             tabIndex={0}
             role="button"
-            className="btn btn-ghost lg:hidden px-0"
+            className="btn btn-ghost lg-1100:hidden px-0"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -62,6 +62,28 @@ const Navbar = () => {
             >
               <li className="md:text-lg px-2 py-1 text-base">Pages to Read</li>
             </NavLink>
+
+            <NavLink
+              to="/requestBooks"
+              className={({ isActive }) =>
+                isActive
+                  ? "border-l-4 border-customPrimaryGreen font-semibold text-customPrimaryGreen duration-200"
+                  : "duration-200"
+              }
+            >
+              <li className="md:text-lg px-2 py-1 text-base">Request Books</li>
+            </NavLink>
+
+            <NavLink
+              to="/aboutUs"
+              className={({ isActive }) =>
+                isActive
+                  ? "border-l-4 border-customPrimaryGreen font-semibold text-customPrimaryGreen duration-200"
+                  : "duration-200"
+              }
+            >
+              <li className="md:text-lg px-2 py-1 text-base">About Us</li>
+            </NavLink>
           </ul>
         </div>
 
@@ -73,8 +95,8 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <div className="navbar-center lg:flex hidden">
-        <ul className="menu menu-horizontal gap-4 p-0">
+      <div className="navbar-center lg-1100:flex lg:flex-grow hidden">
+        <ul className="menu menu-horizontal lg:mx-auto p-0 pr-1">
           <NavLink
             to="/"
             className={({ isActive }) =>
@@ -83,7 +105,7 @@ const Navbar = () => {
                 : " flex items-center text-customGray08 border  border-transparent hover:bg-gray-200 rounded-lg duration-300"
             }
           >
-            <li className="md:text-lg px-5 py-4 text-base text-center">Home</li>
+            <li className="md:text-base p-4 text-base text-center">Home</li>
           </NavLink>
 
           <NavLink
@@ -94,7 +116,9 @@ const Navbar = () => {
                 : " flex items-center text-customGray08 border  border-transparent hover:bg-gray-200 rounded-lg duration-300"
             }
           >
-            <li className="md:text-lg px-5 py-4 text-base">Listed Books</li>
+            <li className="md:text-base p-4 text-base text-center">
+              Listed Books
+            </li>
           </NavLink>
 
           <NavLink
@@ -105,16 +129,43 @@ const Navbar = () => {
                 : " flex items-center text-customGray08 border  border-transparent hover:bg-gray-200 rounded-lg duration-300"
             }
           >
-            <li className="md:text-lg px-5 py-4 text-base">Pages to Read</li>
+            <li className="md:text-base p-4 text-base text-center">
+              Pages to Read
+            </li>
+          </NavLink>
+
+          <NavLink
+            to="/requestBooks"
+            className={({ isActive }) =>
+              isActive
+                ? " flex items-center border rounded-lg duration-300 border-customPrimaryGreen font-semibold text text-customPrimaryGreen"
+                : " flex items-center text-customGray08 border  border-transparent hover:bg-gray-200 rounded-lg duration-300"
+            }
+          >
+            <li className="md:text-base p-4 text-base text-center">
+              Request Books
+            </li>
+          </NavLink>
+
+          <NavLink
+            to="/aboutUs"
+            className={({ isActive }) =>
+              isActive
+                ? " flex items-center border rounded-lg duration-300 border-customPrimaryGreen font-semibold text text-customPrimaryGreen"
+                : " flex items-center text-customGray08 border  border-transparent hover:bg-gray-200 rounded-lg duration-300"
+            }
+          >
+            <li className="md:text-base p-4 text-base text-center">About Us</li>
           </NavLink>
         </ul>
       </div>
-      <div className="navbar-end md:gap-4 gap-2">
-        <button className="btn md:py-4 md:px-7 md:text-lg bg-customPrimaryGreen h-fit hover:bg-green-500 sm:text-base text-sm font-semibold text-white outline-none">
+
+      <div className="navbar-end md:gap-4 lg:w-fit gap-2">
+        <button className="btn md:py-4 md:px-5 md:text-lg bg-customPrimaryGreen h-fit hover:bg-green-500 sm:text-base text-sm font-semibold text-white outline-none">
           Sign In
         </button>
 
-        <button className="btn md:py-4 md:px-7 md:text-lg bg-customSecondaryBlue h-fit hover:bg-blue-300 sm:text-base text-sm font-semibold text-white outline-none">
+        <button className="btn md:py-4 md:px-5 md:text-lg bg-customSecondaryBlue h-fit hover:bg-blue-300 sm:text-base text-sm font-semibold text-white outline-none">
           Sign Up
         </button>
       </div>
